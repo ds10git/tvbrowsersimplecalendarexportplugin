@@ -202,5 +202,10 @@ public class SimpleCalendarExportPlugin extends Service {
     public String getAuthor() throws RemoteException {
       return "René Mach";
     }
+
+    @Override
+    public boolean isMarked(long programId) throws RemoteException {
+      return false;
+    }
   };
 }

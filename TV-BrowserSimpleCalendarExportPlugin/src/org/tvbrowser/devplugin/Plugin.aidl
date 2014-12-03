@@ -93,6 +93,14 @@ interface Plugin {
 	 * @return An array of long with all program ids that are marked by this plugin.
 	 */
 	long[] getMarkedPrograms();
+		
+	/**
+	 * Gets if the Program with the given id is marked by this plugin.
+	 * @param programId The id of the program to check.
+	 * @return <code>true</code> if the program with the given id is marked by
+	 *         this plugin, <code>false</code> if not.
+	 */
+	boolean isMarked(in long programId);
 	
 	/**
 	 * Called at activation of this Plugin to inform about the first currently known

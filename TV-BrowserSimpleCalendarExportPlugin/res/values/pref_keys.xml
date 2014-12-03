@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="PREF_CALENDAR_EXPORT_DESCRIPTION_TYPE">PREF_CALENDAR_EXPORT_DESCRIPTION_TYPE</string>
+    <item name="pref_export_description_type_default" type="string" format="string">0</item>
+    
+    <string name="PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL">PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL</string>
+    <item name="pref_calendar_export_title_contains_channel_default" type="bool" format="boolean">false</item>
+</resources>

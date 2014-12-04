@@ -4,6 +4,7 @@
     <string name="service_simple_calendar_export_name">SimpleKalenderExport-Plugin</string>
     <string name="service_simple_calendar_export_description">Sendungen in die Kalender-App eintragen.</string>
     <string name="service_simple_calendar_export_context_title">Sendung in Kalender eintragen</string>
+    <string name="service_simple_calendar_export_context_unmark">Kalender-Markierung entfernen</string>
     
     <string name="service_calendar_export_pref_title">SimpleKalenderExport-Plugin Einstellungen</string>
 	<string name="pref_title">Einstellungen</string>

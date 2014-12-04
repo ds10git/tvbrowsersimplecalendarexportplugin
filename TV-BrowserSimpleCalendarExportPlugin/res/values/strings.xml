@@ -4,6 +4,7 @@
     <string name="service_simple_calendar_export_name">SimpleCalendarExport Plugin</string>
     <string name="service_simple_calendar_export_description">Export programs to the calender app of your device.</string>
     <string name="service_simple_calendar_export_context_title">Add program to calendar</string>
+    <string name="service_simple_calendar_export_context_unmark">Remove calendar marking</string>
     
     <string name="service_calendar_export_pref_title">SimpleCalendarExport Plugin Preferences</string>
 	<string name="pref_title">Preferences</string>

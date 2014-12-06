@@ -72,7 +72,9 @@ public class SimpleCalendarExportPlugin extends Service {
     /* Don't keep instance of plugin manager*/
     mPluginManager = null;
     
-    return super.onUnbind(intent);
+    stopSelf();
+    
+    return false;
   }
   
   @Override
@@ -213,7 +215,20 @@ public class SimpleCalendarExportPlugin extends Service {
     }
     
     @Override
-    public void handleFirstKnownProgramId(long programId) throws RemoteException {}
+    public void handleFirstKnownProgramId(long programId) throws RemoteException {
+      if(programId == -1) {
+        mMarkingProgramIds.clear();
+      }
+      else {
+        String[] knownIds = mMarkingProgramIds.toArray(new String[mMarkingProgramIds.size()]);
+        
+        for(int i = knownIds.length-1; i >= 0; i--) {
+          if(Long.parseLong(knownIds[i]) < programId) {
+            mMarkingProgramIds.remove(knownIds[i]);
+          }
+        }
+      }
+    }
     
     @Override
     public String getVersion() throws RemoteException {

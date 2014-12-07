@@ -26,6 +26,7 @@ import org.tvbrowser.devplugin.Plugin;
 import org.tvbrowser.devplugin.PluginManager;
 import org.tvbrowser.devplugin.PluginMenu;
 import org.tvbrowser.devplugin.Program;
+import org.tvbrowser.devplugin.ReceiveTarget;
 
 import android.app.Service;
 import android.content.ActivityNotFoundException;
@@ -302,5 +303,13 @@ public class SimpleCalendarExportPlugin extends Service {
     public boolean isMarked(long programId) throws RemoteException {
       return programId != mRemovingProgramId && mMarkingProgramIds.contains(String.valueOf(programId));
     }
+    
+    @Override
+    public ReceiveTarget[] getAvailableProgramReceiveTargets() throws RemoteException {
+      return null;
+    }
+
+    @Override
+    public void receivePrograms(Program[] programs, ReceiveTarget target) throws RemoteException {}
   };
 }

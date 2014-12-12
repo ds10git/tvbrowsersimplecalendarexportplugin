@@ -138,11 +138,20 @@ public class SimpleCalendarExportPlugin extends Service {
         
         String title = program.getTitle();
         
-        if(pref.getBoolean(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL), getResources().getBoolean(R.bool.pref_calendar_export_title_contains_channel_default))) {
-          title = program.getChannel().getChannelName() + ": " + title;
+        boolean channelInTitle = pref.getBoolean(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL), getResources().getBoolean(R.bool.pref_calendar_export_title_contains_channel_default));
+        
+        if(channelInTitle) {
+          if(pref.getString(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CHANNEL_POSITION), getString(R.string.pref_calendar_export_title_channel_position_default)).equals("0")) {
+            title = program.getChannel().getChannelName() + ": " + title;
+          }
+          else {
+            title = title + " (" + program.getChannel().getChannelName() + ")";
+          }
         }
         
-        addCalendarEntry.putExtra(Events.EVENT_LOCATION, program.getChannel().getChannelName());
+        if(!channelInTitle || pref.getBoolean(getString(R.string.PREF_CALENDAR_EXPORT_LOCATION_CONTAINS_CHANNEL), getResources().getBoolean(R.bool.pref_calendar_export_location_contains_channel_default))) {
+          addCalendarEntry.putExtra(Events.EVENT_LOCATION, program.getChannel().getChannelName());
+        }
         
         // Add the calendar event details
         addCalendarEntry.putExtra(Events.TITLE, title);

@@ -16,18 +16,75 @@
  */
 package org.tvbrowser.simplecalendarexportplugin;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 
 /**
  * The preferences fragment for the SimpleCalenderExportPlugin.
  * 
  * @author René Mach
  */
-public class SimpleCalendarExportPluginPreferencesFragment extends PreferenceFragment {
+public class SimpleCalendarExportPluginPreferencesFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     addPreferencesFromResource(R.xml.preferences_calendar_export);
+    
+    onSharedPreferenceChanged(PreferenceManager.getDefaultSharedPreferences(getActivity()), getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL));
+  }
+
+  @Override
+  public void onAttach(Activity activity) {
+    super.onAttach(activity);
+    
+    PreferenceManager.getDefaultSharedPreferences(activity).registerOnSharedPreferenceChangeListener(this);
+  }
+  
+  @Override
+  public void onDetach() {
+    super.onDetach();
+    
+    PreferenceManager.getDefaultSharedPreferences(getActivity()).unregisterOnSharedPreferenceChangeListener(this);
+  }
+  
+  @Override
+  public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    if(key.equals(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CHANNEL_POSITION)) ||
+        key.equals(getString(R.string.PREF_CALENDAR_EXPORT_DESCRIPTION_TYPE))) {
+      ListPreference lp = (ListPreference) findPreference(key);
+      
+      if(lp != null) {
+        lp.setSummary("dummy"); // required or will not update
+        
+        String value = String.valueOf(lp.getEntry());
+        
+        if(value.endsWith("%")) {
+          value += "%";
+        }
+        
+        lp.setSummary(value);
+      }
+    }
+  
+    if(key.equals(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL))) {
+      CheckBoxPreference channelInTitle = (CheckBoxPreference)findPreference(key);
+      CheckBoxPreference channelInLocation = (CheckBoxPreference)findPreference(getString(R.string.PREF_CALENDAR_EXPORT_LOCATION_CONTAINS_CHANNEL));
+      ListPreference channelPosition = (ListPreference)findPreference(getString(R.string.PREF_CALENDAR_EXPORT_TITLE_CHANNEL_POSITION));
+      
+      if(channelInTitle != null && channelInLocation != null && channelPosition != null) {
+        if(!channelInTitle.isChecked()) {
+          channelInLocation.setChecked(true);
+        }
+        
+        channelInLocation.setEnabled(channelInTitle.isChecked());
+        channelPosition.setEnabled(channelInTitle.isChecked());
+      }
+    }
   }
 }

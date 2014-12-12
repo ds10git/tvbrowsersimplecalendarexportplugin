@@ -4,4 +4,9 @@
 	    <item>0</item>
 	    <item>1</item>
 	</string-array>
+	
+    <string-array name="pref_export_title_channel_name_position_entries">
+        <item>@string/pref_export_title_channel_name_start</item>
+        <item>@string/pref_export_title_channel_name_end</item>
+    </string-array>
 </resources>

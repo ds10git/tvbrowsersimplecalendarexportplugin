@@ -5,4 +5,10 @@
     
     <string name="PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL">PREF_CALENDAR_EXPORT_TITLE_CONTAINS_CHANNEL</string>
     <item name="pref_calendar_export_title_contains_channel_default" type="bool" format="boolean">false</item>
+
+    <string name="PREF_CALENDAR_EXPORT_LOCATION_CONTAINS_CHANNEL">PREF_CALENDAR_EXPORT_LOCATION_CONTAINS_CHANNEL</string>
+    <item name="pref_calendar_export_location_contains_channel_default" type="bool" format="boolean">true</item>
+    
+    <string name="PREF_CALENDAR_EXPORT_TITLE_CHANNEL_POSITION">PREF_CALENDAR_EXPORT_TITLE_CHANNEL_POSITION</string>
+    <item name="pref_calendar_export_title_channel_position_default" type="string" format="string">0</item>
 </resources>

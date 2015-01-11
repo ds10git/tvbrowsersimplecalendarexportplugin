@@ -20,7 +20,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="org.tvbrowser.intent.action.PLUGIN"/>
-                <category android:name="org.tvbrowser.intent.category.SimpleCalendarExportPlugin"/>
             </intent-filter>
         </service>
         <activity

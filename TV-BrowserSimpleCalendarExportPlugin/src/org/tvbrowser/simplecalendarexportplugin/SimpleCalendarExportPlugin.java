@@ -99,7 +99,11 @@ public class SimpleCalendarExportPlugin extends Service {
     public void openPreferences(List<Channel> subscribedChannels) throws RemoteException {
       Intent startPref = new Intent(SimpleCalendarExportPlugin.this, SimpleCalendarExportPluginPreferencesActivity.class);
       startPref.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-      startPref.putExtra(SimpleCalendarExportPluginPreferencesActivity.DARK_THEME_EXTRA_KEY, mPluginManager.getTvBrowserSettings().isUsingDarkTheme());
+      
+      if(mPluginManager != null) {
+        startPref.putExtra(SimpleCalendarExportPluginPreferencesActivity.DARK_THEME_EXTRA_KEY, mPluginManager.getTvBrowserSettings().isUsingDarkTheme());
+      }
+      
       startActivity(startPref);
     }
     

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="info">Diese App ist ein Plugin für die App TV-Browser.\n\nSie kann nur innerhalb von TV-Browser benutzt werden.</string>
     <string name="app_name">TV-Browser SimpleKalenderExport-Plugin</string>
     <string name="service_simple_calendar_export_name">SimpleKalenderExport-Plugin</string>
     <string name="service_simple_calendar_export_description">Sendungen in die Kalender-App eintragen.</string>
